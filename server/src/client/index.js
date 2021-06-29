@@ -1,24 +1,16 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import Routes from '../Routes';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import React from "react";
+import ReactDom from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import Routes from "../Routes";
+import getStore from "../store";
 
-const reducer = (state = { name: 'dell' }, action) => {
-	return state;
-}
-
-const store = createStore(reducer, applyMiddleware(thunk));
 const App = () => {
-	return (
-		<Provider store={store}>
-			<BrowserRouter>
-				{Routes}
-			</BrowserRouter>
-		</Provider>
-	)
-}
+  return (
+    <Provider store={getStore()}>
+      <BrowserRouter>{Routes}</BrowserRouter>
+    </Provider>
+  );
+};
 
-ReactDom.hydrate(<App />, document.getElementById('root'))
+ReactDom.hydrate(<App />, document.getElementById("root"));
