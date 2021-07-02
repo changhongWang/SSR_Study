@@ -1,14 +1,22 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import Routes from "../Routes";
-import getStore from "../store";
+import routes from "../Routes";
+import { getClientStore } from "../store";
+
+const store = getClientStore();
 
 const App = () => {
   return (
-    <Provider store={getStore()}>
-      <BrowserRouter>{Routes}</BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div>
+          {routes.map((route) => (
+            <Route {...route} key={route.key} />
+          ))}
+        </div>
+      </BrowserRouter>
     </Provider>
   );
 };

@@ -1,5 +1,3 @@
-export const SECRET_KEY = "PP87ANTIPIRATE";
-
 export const ACTION_TYPE = {
   CHANGE_LIST: "HOME/CHANGE_LIST",
 };
