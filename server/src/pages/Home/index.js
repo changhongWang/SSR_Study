@@ -9,7 +9,6 @@ class Home extends Component {
     console.log(this.props.newsList);
     return (
       <div>
-        <Header />
         <div>This is {this.props.name}!</div>
         <button
           onClick={() => {
