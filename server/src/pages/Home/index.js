@@ -28,16 +28,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.newsList.length) {
-      this.props.getHomeList();
-    }
+    // if (!this.props.newsList.length) {
+    this.props.getHomeList();
+    // }
   }
 }
 
 /***
  * 负责在服务器端渲染之前，把这个路由需要的数据提前加载好（异步SSR）
  */
-Home.loadData = (store) => store.dispatch(actions.getHomeList(true));
+Home.loadData = (store) => store.dispatch(actions.getHomeList());
 
 const mapStateToProps = (state) => ({
   name: state.home.name,
