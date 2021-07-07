@@ -1,0 +1,3 @@
+export const ACTION_TYPE = {
+  CHANGE_LOGIN_STAT: "USER/CHANGE_LOGIN_STAT",
+};
