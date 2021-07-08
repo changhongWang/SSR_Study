@@ -12,7 +12,6 @@ app.use(
   "/api",
   proxy("http://47.95.113.63", {
     proxyReqPathResolver: function (req) {
-      console.log(req.url, 989);
       return `/ssr/api${req.url}`;
     },
   })
@@ -26,8 +25,9 @@ app.get("*", function (req, res) {
 
   matchedRoutes.forEach((item) => {
     item.route.component.loadData &&
-      promises.push(item.route.component.loadData(store));
+      promises.push(item.route.component.loadData(store, req));
   });
+
   Promise.all(promises).then(() => {
     res.send(render(store, routes, req));
   });
