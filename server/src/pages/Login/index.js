@@ -37,6 +37,11 @@ const Login = (props) => {
   );
 };
 
+/***
+ * 负责在服务器端渲染之前，把这个路由需要的数据提前加载好（异步SSR）
+ */
+Login.loadData = (store, req) => store.dispatch(actions.checkLogin(req));
+
 const mapStateToProps = (state) => {
   return {
     isLogin: state.user.isLogin,
@@ -45,11 +50,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   login: () => {
-    console.log("page login");
     dispatch(actions.login());
   },
   logout: () => {
-    console.log("page log out");
     dispatch(actions.logout());
   },
 });
