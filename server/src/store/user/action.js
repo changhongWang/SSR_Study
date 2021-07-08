@@ -1,5 +1,4 @@
 import { ACTION_TYPE } from "./const";
-import { SECRET_KEY } from "../../common/const";
 import { parseCookie } from "../../common/utils";
 
 const changeLoginStatus = (loginStatus) => ({
@@ -14,7 +13,7 @@ export const checkLogin = (req) => {
       if (cookieObj.login) {
         dispatch(changeLoginStatus(true));
       } else {
-        axios.get(`/api/isLogin.json?secret=${SECRET_KEY}`).then((res) => {
+        axios.get("/api/isLogin.json").then((res) => {
           console.log(res.data, 777);
           if (res.status === 200 && res.data.success) {
             dispatch(changeLoginStatus(res.data.data.login));
@@ -31,7 +30,7 @@ export const checkLogin = (req) => {
 export const login = () => {
   return (dispatch, getState, axios) => {
     console.log("actions login");
-    return axios.get(`/api/login.json?secret=${SECRET_KEY}`).then((res) => {
+    return axios.get("/api/login.json").then((res) => {
       console.log(res.data.data.login);
       if (res.status === 200 && res.data.success) {
         dispatch(changeLoginStatus(res.data.data.login));
@@ -45,7 +44,7 @@ export const login = () => {
 export const logout = () => {
   return (dispatch, getState, axios) => {
     console.log("actions log out");
-    return axios.get(`/api/logout.json?secret=${SECRET_KEY}`).then((res) => {
+    return axios.get("/api/logout.json").then((res) => {
       if (res.status === 200 && res.data.success) {
         dispatch(changeLoginStatus(!res.data.data.logout));
       }
