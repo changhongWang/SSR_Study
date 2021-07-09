@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import App from "./App";
 
 export default [
@@ -21,6 +22,9 @@ export default [
         component: Login,
         exact: true,
         key: "login",
+      },
+      {
+        component: NotFound,
       },
     ],
   },
