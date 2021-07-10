@@ -14,7 +14,6 @@ export const checkLogin = (req) => {
         dispatch(changeLoginStatus(true));
       } else {
         axios.get("/api/isLogin.json").then((res) => {
-          console.log(res.data, 777);
           if (res.status === 200 && res.data.success) {
             dispatch(changeLoginStatus(res.data.data.login));
           } else {

@@ -13,12 +13,14 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   );
+  console.log(context.homeStyle, 99);
 
   return `
 		<html>
 			<head>
 				<title>ssr</title>
 			</head>
+      <style type="text/css">${context.homeStyle}</style>
 			<body>
 				<div id="root">${content}</div>
         <script>

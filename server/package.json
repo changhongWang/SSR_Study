@@ -36,6 +36,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0"
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "css-loader": "^1.0.0",
+    "isomorphic-style-loader": "^4.0.0",
+    "style-loader": "^0.22.1"
   }
 }

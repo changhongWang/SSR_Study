@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../../components/Header";
 import { actions } from "./store";
+import styles from "./index.css";
 
 // 同构：一套React代码，在服务器端执行一次，再客户端再执行一次
 class Home extends Component {
+  componentWillMount() {
+    if (this.props.staticContext) {
+      this.props.staticContext.homeStyle = styles._getCss();
+    }
+  }
+
   render() {
     console.log(this.props.newsList);
     return (
-      <div>
+      <div className={styles.bg}>
         <div>This is {this.props.name}!</div>
         <button
           onClick={() => {
