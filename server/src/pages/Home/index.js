@@ -41,11 +41,6 @@ class Home extends Component {
   }
 }
 
-/***
- * 负责在服务器端渲染之前，把这个路由需要的数据提前加载好（异步SSR）
- */
-Home.loadData = (store) => store.dispatch(actions.getHomeList());
-
 const mapStateToProps = (state) => ({
   name: state.home.name,
   newsList: state.home.newsList,
@@ -57,4 +52,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const exportHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+/***
+ * 负责在服务器端渲染之前，把这个路由需要的数据提前加载好（异步SSR）
+ */
+exportHome.loadData = (store) => store.dispatch(actions.getHomeList());
+export default exportHome;
