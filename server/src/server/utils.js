@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, Route } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
@@ -13,12 +14,14 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   );
-  console.log(context.homeStyle, 99);
+
+  const helmet = Helmet.renderStatic();
 
   return `
 		<html>
 			<head>
-				<title>ssr</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
 			</head>
       <style type="text/css">${context.homeStyle}</style>
 			<body>

@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import Header from "../../components/Header";
 import StyleHoc from "../../components/StyleHoc";
 import { actions } from "./store";
@@ -10,22 +11,28 @@ class Home extends Component {
   render() {
     console.log(this.props.newsList);
     return (
-      <div className={styles.bg}>
-        <div>This is {this.props.name}!</div>
-        <button
-          onClick={() => {
-            alert("click1");
-          }}
-        >
-          click
-        </button>
-        <ul>
-          {this.props.newsList &&
-            this.props.newsList.map((item) => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-        </ul>
-      </div>
+      <Fragment>
+        <Helmet>
+          <title>This is SSR News Page - Beautiful</title>
+          <meta name="description" content="lalalalal"></meta>
+        </Helmet>
+        <div className={styles.bg}>
+          <div>This is {this.props.name}!</div>
+          <button
+            onClick={() => {
+              alert("click1");
+            }}
+          >
+            click
+          </button>
+          <ul>
+            {this.props.newsList &&
+              this.props.newsList.map((item) => (
+                <li key={item.id}>{item.title}</li>
+              ))}
+          </ul>
+        </div>
+      </Fragment>
     );
   }
 
