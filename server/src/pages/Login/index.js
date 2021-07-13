@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { actions } from "../../store/user";
 import StyleHoc from "../../components/StyleHoc";
 
-import styles from "./index.css";
+import "./index.scss";
 
 class Login extends Component {
   renderLoggedIn() {
@@ -36,7 +36,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className={styles.test_a}>
+      <div className="test_a">
         {this.props.isLogin ? this.renderLoggedIn() : this.renderNotLogIn()}
       </div>
     );
@@ -63,7 +63,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StyleHoc(Login, styles));
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

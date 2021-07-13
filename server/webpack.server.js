@@ -28,6 +28,10 @@ const serverConfig = {
           },
         ],
       },
+      {
+        test: /\.scss$/,
+        use: ["isomorphic-style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
 };
